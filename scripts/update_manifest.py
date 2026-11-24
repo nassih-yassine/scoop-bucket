@@ -5,6 +5,7 @@ Idempotent: running it twice for the same release changes nothing.
 """
 
 import json
+import os
 import pathlib
 import urllib.request
 
@@ -13,14 +14,22 @@ ASSET = "dep-vet-x86_64-pc-windows-msvc.zip"
 MANIFEST = pathlib.Path("bucket/dep-vet.json")
 
 
+def token() -> str | None:
+    for name in ("GH_TOKEN", "GITHUB_TOKEN"):
+        value = os.environ.get(name)
+        if value:
+            return value
+    return None
+
+
 def fetch(url: str) -> bytes:
-    request = urllib.request.Request(
-        url,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "dep-vet-scoop-bucket",
-        },
-    )
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "dep-vet-scoop-bucket",
+    }
+    if (value := token()) is not None:
+        headers["Authorization"] = f"Bearer {value}"
+    request = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(request, timeout=30) as response:
         return response.read()
 
