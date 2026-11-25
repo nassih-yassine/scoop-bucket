@@ -1,13 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
-  "version": "0.13.6",
+  "version": "0.16.0",
   "description": "Check a dependency's risk before it enters your lockfile: CVEs, typosquats, install scripts, provenance.",
   "homepage": "https://github.com/nassih-yassine/Dep-Vet",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://github.com/nassih-yassine/Dep-Vet/releases/download/v0.13.6/dep-vet-x86_64-pc-windows-msvc.zip",
-      "hash": "d2b6dd13f96edcdbe612eea8dc1d98722ce92578a5c604b30cd0064d9121c0d1"
+      "url": "https://github.com/nassih-yassine/Dep-Vet/releases/download/v0.16.0/dep-vet-x86_64-pc-windows-msvc.zip",
+      "hash": "5ed99516c0b7d6c88cd7276f27c3797c73b96da62b475a03b0ea09bef6e1cae2"
     }
   },
   "bin": "dep-vet.exe",
